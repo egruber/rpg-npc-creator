@@ -1,1 +1,6 @@
 C:\Users\Eric\Source\Repos\rpg-npc-creator\rpg-npc-creator\rpg-npc-creator\bin\Debug\rpg-npc-creator.exe.config
+C:\Users\Eric\Source\Repos\rpg-npc-creator\rpg-npc-creator\rpg-npc-creator\obj\Debug\rpg-npc-creator.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Source\Repos\rpg-npc-creator\rpg-npc-creator\rpg-npc-creator\bin\Debug\rpg-npc-creator.exe
+C:\Users\Eric\Source\Repos\rpg-npc-creator\rpg-npc-creator\rpg-npc-creator\bin\Debug\rpg-npc-creator.pdb
+C:\Users\Eric\Source\Repos\rpg-npc-creator\rpg-npc-creator\rpg-npc-creator\obj\Debug\rpg-npc-creator.exe
+C:\Users\Eric\Source\Repos\rpg-npc-creator\rpg-npc-creator\rpg-npc-creator\obj\Debug\rpg-npc-creator.pdb

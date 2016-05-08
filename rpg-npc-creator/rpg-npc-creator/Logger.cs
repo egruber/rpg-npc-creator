@@ -20,16 +20,22 @@ namespace rpg_npc_creator
         public Logger()
         {
             // Default constructor
-            DateTime CurrentDate = new DateTime.Now;
-            string NewFileLocation = CurrentDate.ToString("MM, DD, YYYY") + ".log";
+            string CurrentDate = DateTime.Now.ToString("mmddyyyy");
+            string NewFileLocation = CurrentDate + ".log";
 
             // Check that the directory exists
-            string LogFileLocation = Directory.GetCurrentDirectory();
-            
+            string ApplicationLocation = Directory.GetCurrentDirectory();
+
+            Console.WriteLine("Current Directory: " + ApplicationLocation);
+            //string ListOfDirectories = Directory.GetDirectories(ApplicationLocation);
+
+
+
+
 
             //if (File.Exists("logfiles\\" + NewFileLocation))
             //{
-                // Add an iterator and increase it until we end up with a new 
+            // Add an iterator and increase it until we end up with a new 
 
 
             //}

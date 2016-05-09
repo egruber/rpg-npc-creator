@@ -10,7 +10,7 @@ namespace rpg_npc_creator
     // The Logger class is an object that you can log messages to, and saves out any events that happen with a log level
     class Logger
     {
-        private string FileLocation;
+        private string LogFileLocation;
 
         public enum LogLevels
         {
@@ -21,28 +21,29 @@ namespace rpg_npc_creator
         {
             // Default constructor
             string CurrentDate = DateTime.Now.ToString("mmddyyyy");
-            string NewFileLocation = CurrentDate + ".log";
+            string NewFileName = CurrentDate + ".log";
+
 
             // Check that the directory exists
             string ApplicationLocation = Directory.GetCurrentDirectory();
+            string LogFileDirectory = ApplicationLocation+"\\logfiles\\";
 
-            Console.WriteLine("Current Directory: " + ApplicationLocation);
-            //string ListOfDirectories = Directory.GetDirectories(ApplicationLocation);
+            if(!Directory.Exists(LogFileDirectory))
+            {
+                // Create Log file directory if it doesn't exist
+                Directory.CreateDirectory(LogFileDirectory);
+            }
 
+            // In this first pass, I'm not going to create unique log files per each instance.
+            // TODO: Create a new log file per run/call.
 
+            // Create the true path to the log
+            string LogFile = LogFileDirectory + NewFileName;
 
+            // Create the file
+            // TODO Create the file without overwriting the previous contents
+            using (File.Create(LogFile)) { };
 
-
-            //if (File.Exists("logfiles\\" + NewFileLocation))
-            //{
-            // Add an iterator and increase it until we end up with a new 
-
-
-            //}
-            //else
-            //{
-
-            //}
         }
     }
 }

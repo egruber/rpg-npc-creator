@@ -42,7 +42,15 @@ namespace rpg_npc_creator
 
             // Create the file
             // TODO Create the file without overwriting the previous contents
-            using (File.Create(LogFile)) { };
+            try
+            {
+                using (File.Create(LogFile)) { };
+            }
+            catch
+            {
+                Console.WriteLine("Caught errors");
+            }
+
 
         }
     }

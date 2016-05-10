@@ -40,6 +40,9 @@ namespace rpg_npc_creator
             // Create the true path to the log
             string LogFile = LogFileDirectory + NewFileName;
 
+            // Since we know the true path, assign it to the private location 
+            LogFileLocation = LogFile;
+
             // Create the file
             // TODO Create the file without overwriting the previous contents
             try
@@ -51,7 +54,46 @@ namespace rpg_npc_creator
                 Console.WriteLine("Caught errors");
             }
 
-
         }
+        
+        // Write to the log without a log level
+        public void Write(Object LogItem)
+        {
+            // Verify the logfile exists before doing anything
+            if (File.Exists(LogFileLocation) == false)
+            {
+                Console.WriteLine("LogFile has not been created.");
+            }
+
+            // Any log information passed without a loglevel defaults to info
+            // Write the string version of the LogItem to the file
+            using (StreamWriter LogMessage = new StreamWriter(LogFileLocation))
+            {
+                string OutputLogMessage = "["+LogLevels.INFO+"] "+DateTime.Now+" "+LogItem.ToString();
+
+                LogMessage.WriteLine(OutputLogMessage);
+
+            }
+        }
+        
+        // Write a log message with a specific log level
+        public void Write(Object LogItem, LogLevels LogLevel)
+        {
+            // Verify the logfile exists before doing anything
+            if (File.Exists(LogFileLocation) == false)
+            {
+                Console.WriteLine("LogFile has not been created.");
+            }
+
+            // Write the string version of the LogItem to the file
+            using (StreamWriter LogMessage = new StreamWriter(LogFileLocation))
+            {
+                string OutputLogMessage = "[" + LogLevel + "] " + DateTime.Now + " " + LogItem.ToString();
+
+                LogMessage.WriteLine(OutputLogMessage);
+
+            }
+        }
+
     }
 }

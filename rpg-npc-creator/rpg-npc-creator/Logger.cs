@@ -35,7 +35,7 @@ namespace rpg_npc_creator
             }
 
             // In this first pass, I'm not going to create unique log files per each instance.
-            // TODO: Create a new log file per run/call.
+            // TODO: Create a new log file per call.
 
             // Create the true path to the log
             string LogFile = LogFileDirectory + NewFileName;
@@ -57,7 +57,7 @@ namespace rpg_npc_creator
         }
         
         // Write to the log without a log level
-        public void Write(Object LogItem)
+        private void Write(Object LogItem)
         {
             // Verify the logfile exists before doing anything
             if (File.Exists(LogFileLocation) == false)
@@ -67,7 +67,7 @@ namespace rpg_npc_creator
 
             // Any log information passed without a loglevel defaults to info
             // Write the string version of the LogItem to the file
-            using (StreamWriter LogMessage = new StreamWriter(LogFileLocation))
+            using (StreamWriter LogMessage = File.AppendText(LogFileLocation))
             {
                 string OutputLogMessage = "["+LogLevels.INFO+"] "+DateTime.Now+" "+LogItem.ToString();
 
@@ -77,7 +77,7 @@ namespace rpg_npc_creator
         }
         
         // Write a log message with a specific log level
-        public void Write(Object LogItem, LogLevels LogLevel)
+        private void Write(Object LogItem, LogLevels LogLevel)
         {
             // Verify the logfile exists before doing anything
             if (File.Exists(LogFileLocation) == false)
@@ -86,13 +86,31 @@ namespace rpg_npc_creator
             }
 
             // Write the string version of the LogItem to the file
-            using (StreamWriter LogMessage = new StreamWriter(LogFileLocation))
+            using (StreamWriter LogMessage = File.AppendText(LogFileLocation))
             {
                 string OutputLogMessage = "[" + LogLevel + "] " + DateTime.Now + " " + LogItem.ToString();
 
                 LogMessage.WriteLine(OutputLogMessage);
 
             }
+        }
+
+        // Avoid writing without a log level by only exposing the log-level'd write methods
+        public void Warn(Object LogItem)
+        {
+            this.Write(LogItem, LogLevels.WARN);
+        }
+        public void Debug(Object LogItem)
+        {
+            this.Write(LogItem, LogLevels.DEBUG);
+        }
+        public void Info(Object LogItem)
+        {
+            this.Write(LogItem, LogLevels.INFO);
+        }
+        public void Error(Object LogItem)
+        {
+            this.Write(LogItem, LogLevels.ERROR);
         }
 
     }

@@ -129,6 +129,9 @@ namespace rpg_npc_creator
             NewStatValue.Set(2);
 
             var NewNpc = new Npc(NewName,NewStatValue);
+
+            // Call the Logger
+            Logger Log = new Logger();
             Console.ReadKey();
             
         }

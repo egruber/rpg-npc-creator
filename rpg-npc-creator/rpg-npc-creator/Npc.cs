@@ -58,8 +58,8 @@ namespace rpg_npc_creator
     // Add a way to interface with the NPC 
     public interface INpc
     {
-        Stat Statistic { get; }
-        Name NpcName { get; }
+        Stat Statistic { get; set; }
+        Name NpcName { get; set; }
     }
     // Add a stat to the NPC
     public class Stat
@@ -87,7 +87,7 @@ namespace rpg_npc_creator
     // Add an interface to a stat
     public interface IStat
     {
-        int Value { get; }
+        int Value { get; set; }
     }
     // Add a name to the NPCs
     public class Name
@@ -113,6 +113,6 @@ namespace rpg_npc_creator
     // Create an interface to the Name
     public interface IName
     {
-        string NpcName { get; }
+        string NpcName { get; set; }
     }
 }

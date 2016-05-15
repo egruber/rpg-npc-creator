@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace rpg_npc_creator
 {
     // Add a name to the NPCs
+    [JsonObject(MemberSerialization.OptIn)]
     public class Name
     {
-        string NpcName;
+        [JsonProperty]
+        string NpcName { get; set; }
 
         public void Set(string Name)
         {
@@ -30,6 +33,6 @@ namespace rpg_npc_creator
     // Create an interface to the Name
     public interface IName
     {
-        string NpcName { get; }
+        string NpcName { get; set; }
     }
 }

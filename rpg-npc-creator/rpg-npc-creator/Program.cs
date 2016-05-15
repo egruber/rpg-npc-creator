@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// Serializing objects in Json
+using Newtonsoft.Json;
 
 namespace rpg_npc_creator
 {
+
     class Program
     {
         static void Main(string[] args)
@@ -17,6 +20,13 @@ namespace rpg_npc_creator
             NewStatValue.Set(2);
 
             var NewNpc = new Npc(NewName,NewStatValue);
+            Npc BlankNpc = new Npc();
+
+            string serializedNpc = JsonConvert.SerializeObject(BlankNpc);
+            Console.WriteLine(serializedNpc);
+
+            string serializedNpc = JsonConvert.SerializeObject(NewStatValue);
+            Console.WriteLine(serializedNpc);
 
             // Call the Logger
             Logger Log = new Logger();

@@ -25,6 +25,9 @@ namespace rpg_npc_creator
             string serializedNpc = JsonConvert.SerializeObject(BlankNpc);
             Console.WriteLine(serializedNpc);
 
+            string serializedNpc = JsonConvert.SerializeObject(NewStatValue);
+            Console.WriteLine(serializedNpc);
+
             // Call the Logger
             Logger Log = new Logger();
             Console.ReadKey();

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace rpg_npc_creator
 {
     // Add a stat to the NPC
+    [JsonObject(MemberSerialization.OptIn)]
     public class Stat
     {
-        int Value;
+        [JsonProperty]
+        int Value { get; set; }
 
         public void Set(int NewValue)
         {
@@ -32,6 +35,6 @@ namespace rpg_npc_creator
     // Add an interface to a stat
     public interface IStat
     {
-        int Value { get; }
+        int Value { get; set; }
     }
 }

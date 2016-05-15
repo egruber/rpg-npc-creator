@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace rpg_npc_creator
 {
+
     class Program
     {
         static void Main(string[] args)
@@ -19,8 +20,9 @@ namespace rpg_npc_creator
             NewStatValue.Set(2);
 
             var NewNpc = new Npc(NewName,NewStatValue);
+            Npc BlankNpc = new Npc();
 
-            string serializedNpc = JsonConvert.SerializeObject(NewStatValue);
+            string serializedNpc = JsonConvert.SerializeObject(BlankNpc);
             Console.WriteLine(serializedNpc);
 
             // Call the Logger

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace rpg_npc_creator
 {
+    // TODO Support Logger as a client to this class so all the interactions with the objects in this class are handled better than console output
     // Add a stat to the NPC
     [JsonObject(MemberSerialization.OptIn)]
     public class Stat
@@ -29,11 +30,24 @@ namespace rpg_npc_creator
 
             Console.WriteLine("New Stat created with value: " + IncomingValue);
         }
-    }
-    // Add an interface to a stat
-    public interface IStat
-    {
-        int Value { get; set; }
-        string Name { get; set; }
+        public Stat(int IncomingValue, string IncomingName)
+        {
+            Value = IncomingValue;
+            Name = IncomingName;
+
+            Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
+        }
+
+        // Set
+        public void Set(int IncomingValue)
+        {
+            this.Value = IncomingValue;
+        }
+        public void Set(int IncomingValue, string IncomingName)
+        {
+            this.Value = IncomingValue;
+            this.Name = IncomingName;
+        }
+
     }
 }

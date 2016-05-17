@@ -17,7 +17,8 @@ namespace rpg_npc_creator
             var NewName = new Name();
             NewName.Set("Words");
             var NewStatValue = new Stat();
-            NewStatValue.Set(2);
+
+            NewStatValue.Set(1,"Strength");
 
             var NewNpc = new Npc(NewName,NewStatValue);
             Npc BlankNpc = new Npc();
@@ -25,8 +26,8 @@ namespace rpg_npc_creator
             string serializedNpc = JsonConvert.SerializeObject(BlankNpc);
             Console.WriteLine(serializedNpc);
 
-            string serializedNpc = JsonConvert.SerializeObject(NewStatValue);
-            Console.WriteLine(serializedNpc);
+            string serializedStat = JsonConvert.SerializeObject(NewStatValue);
+            Console.WriteLine(serializedStat);
 
             // Call the Logger
             Logger Log = new Logger();

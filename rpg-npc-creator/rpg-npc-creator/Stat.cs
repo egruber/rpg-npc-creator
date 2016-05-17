@@ -47,18 +47,42 @@ namespace rpg_npc_creator
         // Set
         public void Set(int IncomingValue)
         {
-            this.Value = IncomingValue;
+            if(IncomingValue >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
+            }
+            else
+            {
+                this.Value = IncomingValue;
+            }
+            
         }
         public void Set(int IncomingValue, string IncomingName)
         {
-            this.Value = IncomingValue;
+            if (IncomingValue >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
+            }
+            else
+            {
+                this.Value = IncomingValue;
+            }
             this.Name = IncomingName;
         }
 
         // Increase Stat Value
         public void IncreaseBy(int ValueToIncreaseBy)
         {
-            this.Value = Value + ValueToIncreaseBy;
+            if(ValueToIncreaseBy+this.Value >= sizeof(int))
+            {
+                Console.WriteLine("This value: "+ValueToIncreaseBy+ " is too large to add to this stat value: "+this.Value);
+            }
+            else
+            {
+                this.Value = Value + ValueToIncreaseBy;
+            }
+            
         }
+
     }
 }

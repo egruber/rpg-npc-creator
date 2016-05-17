@@ -55,5 +55,10 @@ namespace rpg_npc_creator
             this.Name = IncomingName;
         }
 
+        // Increase Stat Value
+        public void IncreaseBy(int ValueToIncreaseBy)
+        {
+            this.Value = Value + ValueToIncreaseBy;
+        }
     }
 }

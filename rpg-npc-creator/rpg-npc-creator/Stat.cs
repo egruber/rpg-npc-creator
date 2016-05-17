@@ -12,7 +12,7 @@ namespace rpg_npc_creator
     public class Stat
     {
         [JsonProperty]
-        int Value { get; set; }
+        private int Value { get; set; }
 
         public void Set(int NewValue)
         {

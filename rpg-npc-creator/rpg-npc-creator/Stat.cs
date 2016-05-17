@@ -27,9 +27,17 @@ namespace rpg_npc_creator
         }
         public Stat(int IncomingValue)
         {
-            this.Value = IncomingValue;
-            this.Name = "New Stat";
-            Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
+            if (IncomingValue >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
+            }
+            else
+            {
+                this.Value = IncomingValue;
+                this.Name = "New Stat";
+                Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
+            }
+
         }
         public Stat(string IncomingName)
         {
@@ -39,9 +47,17 @@ namespace rpg_npc_creator
         }
         public Stat(int IncomingValue, string IncomingName)
         {
-            Value = IncomingValue;
-            Name = IncomingName;
-            Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
+            if (IncomingValue >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
+            }
+            else
+            {
+                this.Value = IncomingValue;
+                Name = IncomingName;
+                Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
+            }
+
         }
 
         // Set

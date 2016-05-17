@@ -22,19 +22,25 @@ namespace rpg_npc_creator
         public Stat()
         {
             Value = 1;
-            Console.WriteLine("New Stat created with value: " + Value);
+            Name = "New Stat";
+            Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
         public Stat(int IncomingValue)
         {
-            Value = IncomingValue;
-
-            Console.WriteLine("New Stat created with value: " + IncomingValue);
+            this.Value = IncomingValue;
+            this.Name = "New Stat";
+            Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
+        }
+        public Stat(string IncomingName)
+        {
+            this.Value = 1;
+            this.Name = IncomingName;
+            Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
         public Stat(int IncomingValue, string IncomingName)
         {
             Value = IncomingValue;
             Name = IncomingName;
-
             Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
 

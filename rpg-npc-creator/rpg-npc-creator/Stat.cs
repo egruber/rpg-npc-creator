@@ -17,12 +17,6 @@ namespace rpg_npc_creator
         [JsonProperty]
         private string Name { get; set; }
 
-        public void Set(int NewValue)
-        {
-            this.Value = NewValue;
-            Console.WriteLine("Stat Value is now: " + Value);
-        }
-
         // Constructors
         public Stat()
         {

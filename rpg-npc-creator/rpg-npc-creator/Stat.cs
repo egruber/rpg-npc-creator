@@ -13,6 +13,9 @@ namespace rpg_npc_creator
     {
         [JsonProperty]
         private int Value { get; set; }
+        
+        [JsonProperty]
+        private string Name { get; set; }
 
         public void Set(int NewValue)
         {
@@ -29,6 +32,7 @@ namespace rpg_npc_creator
         public Stat(int IncomingValue)
         {
             Value = IncomingValue;
+
             Console.WriteLine("New Stat created with value: " + IncomingValue);
         }
     }
@@ -36,5 +40,6 @@ namespace rpg_npc_creator
     public interface IStat
     {
         int Value { get; set; }
+        string Name { get; set; }
     }
 }

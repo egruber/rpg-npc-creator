@@ -15,7 +15,7 @@ Stat.cs
 Name.cs
 Logger.cs
 ```
-
+# Usage
 You may use this toolset by including it directly into your C# application using the following technique
 ```csharp
 using rpg_npc_creator;
@@ -34,7 +34,7 @@ You can also call the constructor with a stat value
 Stat Dexterity = new Stat(18);
 var GreenArrow = new Npc(Dexterity);
 ```
-Finally, you can define both the stat you would like as well as the name of the Npc
+You can define both the stat you would like as well as the name of the Npc
 ``` csharp 
 Stat Dexterity = new Stat(18);
 Name RealName = new Name("Oliver Queen"); 

@@ -99,6 +99,17 @@ namespace rpg_npc_creator
             }
             
         }
+        public void Increase()
+        {
+            if (this.Value++ >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + this.Value + " is too large to increase by 1");
+            }
+            else
+            {
+                this.Value++;
+            }
+        }
 
     }
 }

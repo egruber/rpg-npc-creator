@@ -5,7 +5,21 @@ Tool to create NPCs for a video game that can be serialized into JSON format
 Oftentimes when creating a larger application such as a game, any simple tools that can relieve a minor development burden at no cost is a boon to the project.
 The goal of this project is to allow the simple creation of NPCs
 
-# Usage
+# Installation
+Install this directly into your primary application directory. Be aware that logfiles will be created in a "logfiles" folder which the application will need to be able to write in. Running this application from a protected directory without the correct access might generate unintended results.
+
+The following files are currently going to be leveraged:
+```bash
+Npc.cs
+Stat.cs
+Name.cs
+Logger.cs
+```
+
+You may use this toolset by including it directly into your C# application using the following technique
+```csharp
+using rpg_npc_creator;
+```
 Calling the default constructor creates a nameless, stat-less NPC.
 ``` csharp
 var GreenArrow = new Npc();

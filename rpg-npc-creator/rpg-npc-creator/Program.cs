@@ -13,6 +13,9 @@ namespace rpg_npc_creator
     {
         static void Main(string[] args)
         {
+            // Call the Logger
+            Logger Log = new Logger();
+
             Console.WriteLine("Creating a new NPC");
             var NewName = new Name();
             NewName.Set("Words");
@@ -29,8 +32,7 @@ namespace rpg_npc_creator
             string serializedStat = JsonConvert.SerializeObject(NewStatValue);
             Console.WriteLine(serializedStat);
 
-            // Call the Logger
-            Logger Log = new Logger();
+            // End Program with visible output
             Console.ReadKey();
             
         }

@@ -111,5 +111,29 @@ namespace rpg_npc_creator
             }
         }
 
+        // Decrease Stat Value
+        public void DecreaseBy(int ValueToDecreaseBy)
+        {
+            if (Math.Abs(ValueToDecreaseBy + this.Value) >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + ValueToDecreaseBy + " is too large to subtract from this stat value: " + this.Value);
+            }
+            else
+            {
+                this.Value = Value + ValueToDecreaseBy;
+            }
+
+        }
+        public void Decrease()
+        {
+            if (Math.Abs(this.Value--) >= sizeof(int))
+            {
+                Console.WriteLine("This value: " + this.Value + " is too large to decrease by 1");
+            }
+            else
+            {
+                this.Value++;
+            }
+        }
     }
 }

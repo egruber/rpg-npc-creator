@@ -135,5 +135,12 @@ namespace rpg_npc_creator
                 this.Value++;
             }
         }
+        public void Serialization()
+        {
+            Logger Log = new Logger();
+            Log.Info("Serializing NPC");
+            string output = JsonConvert.SerializeObject(this);
+            Log.Info("Serialization complete.");
+        }
     }
 }

@@ -26,11 +26,7 @@ namespace rpg_npc_creator
             var NewNpc = new Npc(NewName,NewStatValue);
             Npc BlankNpc = new Npc();
 
-            string serializedNpc = JsonConvert.SerializeObject(BlankNpc);
-            Console.WriteLine(serializedNpc);
-
-            string serializedStat = JsonConvert.SerializeObject(NewStatValue);
-            Console.WriteLine(serializedStat);
+            BlankNpc.Serialization();
 
             // End Program with visible output
             Console.ReadKey();

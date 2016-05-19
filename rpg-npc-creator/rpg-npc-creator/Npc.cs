@@ -55,10 +55,4 @@ namespace rpg_npc_creator
         }
 
     }
-    // Add a way to interface with the NPC 
-    public interface INpc
-    {
-        Stat Statistic { get; set; }
-        Name NpcName { get; set; }
-    }
 }

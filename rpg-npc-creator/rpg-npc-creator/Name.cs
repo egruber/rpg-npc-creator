@@ -30,9 +30,4 @@ namespace rpg_npc_creator
             Console.WriteLine("New NPC created with name: " + IncomingName);
         }
     }
-    // Create an interface to the Name
-    public interface IName
-    {
-        string NpcName { get; set; }
-    }
 }

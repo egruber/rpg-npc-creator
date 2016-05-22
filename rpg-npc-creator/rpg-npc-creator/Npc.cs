@@ -65,5 +65,12 @@ namespace rpg_npc_creator
             Log.Info("Serialization complete.");
         }
 
+        // All NPCs start at level 1. They can have their level increased through the LevelUp() method
+        // Optionally, multiple level ups can be performed sequentially by passing an integer value to the LevelUp() method
+        public void LevelUp(int NumberOfLevels = 1)
+        {
+
+        }
+
     }
 }

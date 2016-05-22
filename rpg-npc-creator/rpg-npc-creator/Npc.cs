@@ -15,6 +15,8 @@ namespace rpg_npc_creator
         private Stat Statistic { get; set; }
         [JsonProperty]
         private Name NpcName { get; set; }
+        [JsonProperty]
+        private int Level { get; set; }
 
         public void Set(Stat NewStatValue, Name NewName)
         {

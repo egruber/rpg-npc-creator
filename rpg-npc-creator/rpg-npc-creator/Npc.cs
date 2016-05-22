@@ -54,7 +54,7 @@ namespace rpg_npc_creator
             this.NpcName = NewName;
         }
 
-        // Serialize
+        // Enter NPC Serialization
         public void Serialization()
         {
             Logger Log = new Logger();

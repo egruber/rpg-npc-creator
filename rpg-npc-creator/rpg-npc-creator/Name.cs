@@ -29,5 +29,14 @@ namespace rpg_npc_creator
             NpcName = IncomingName;
             Console.WriteLine("New NPC created with name: " + IncomingName);
         }
+
+        // Name Serialization
+        public void Serialization()
+        {
+            Logger Log = new Logger();
+            Log.Info("Serializing Name");
+            string output = JsonConvert.SerializeObject(this);
+            Log.Info("Serialization complete.");
+        }
     }
 }

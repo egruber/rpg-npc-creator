@@ -65,11 +65,51 @@ namespace rpg_npc_creator
             Log.Info("Serialization complete.");
         }
 
-        // All NPCs start at level 1. They can have their level increased through the LevelUp() method
-        // Optionally, multiple level ups can be performed sequentially by passing an integer value to the LevelUp() method
-        public void LevelUp(int NumberOfLevels = 1)
+        // Set the Level and call the correct number of LevelUps or LevelDowns
+        public void SetLevel(int IncomingLevel)
         {
+            if(IncomingLevel >= 1 && IncomingLevel <= sizeof(int))
+            {
+                // So long as the level is sane
+                // Set it
+                this.Level = IncomingLevel;
+                if (IncomingLevel > this.Level)
+                {
+                    for (int i = this.Level; i < IncomingLevel; i++)
+                    {
+                        this.LevelUp();
+                    }
+                }
+                else if(IncomingLevel < this.Level )
+                {
+                    for (int i = this.Level; i > IncomingLevel; i--)
+                    {
+                        this.LevelDown();
+                    }
+                }
+                else
+                {
+                    // Do nothing because the level is the same 
 
+                }
+
+            }
+            else
+            {
+
+            }
+
+        }
+
+        // All NPCs start at level 1. They can have their level increased through the LevelUp() method, which can only be called by this class
+        // Optionally, multiple level ups can be performed sequentially by passing an integer value to the LevelUp() method
+        private void LevelUp(int NumberOfLevels = 1)
+        {
+            this.Level = this.Level + NumberOfLevels;
+        }
+        private void LevelDown(int NumberOfLevels = 1)
+        {
+            this.Level = this.Level - NumberOfLevels;
         }
 
     }

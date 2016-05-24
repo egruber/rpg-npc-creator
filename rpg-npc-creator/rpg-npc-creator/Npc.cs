@@ -12,50 +12,57 @@ namespace rpg_npc_creator
     public class Npc
     {
         [JsonProperty]
-        private Stat Statistic { get; set; }
+        private Stat[] StatArray { get; set; }
         [JsonProperty]
         private Name NpcName { get; set; }
         [JsonProperty]
         private int Level { get; set; }
 
+        // Remove Stat construction for now
+        /*
         public void Set(Stat NewStatValue, Name NewName)
         {
-            this.Statistic = NewStatValue;
+            //this.StatArray = NewStatValue;
             this.NpcName = NewName;
         }
+        
         public void Set(Stat NewStatValue)
         {
-            this.Statistic = NewStatValue;
+            this.StatArray = NewStatValue;
             this.NpcName = new Name();
         }
+        */
         public void Set(Name NewName)
         {
             this.NpcName = NewName;
-            this.Statistic = new Stat();
+            //this.StatArray = new Stat();
         }
 
         // Constructors
         public Npc()
         {
-            this.Statistic = new Stat();
+            //this.Statistic = new Stat();
             this.NpcName = new Name();
         }
+        /*
         public Npc(Stat NewStatValue)
         {
             this.Statistic = NewStatValue;
             this.NpcName = new Name();
         }
+        */
         public Npc(Name NewName)
         {
-            this.Statistic = new Stat();
+            //this.Statistic = new Stat();
             this.NpcName = NewName;
         }
+        /*
         public Npc(Name NewName, Stat NewStatValue)
         {
-            this.Statistic = NewStatValue;
+            //this.Statistic = NewStatValue;
             this.NpcName = NewName;
         }
-
+        */
         // Enter NPC Serialization
         public void Serialization()
         {

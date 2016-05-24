@@ -73,15 +73,21 @@ namespace rpg_npc_creator
                 // So long as the level is sane
                 // Set it
                 this.Level = IncomingLevel;
+
+                // If the Level we are going to is larger than the current level of the NPC
                 if (IncomingLevel > this.Level)
                 {
+                    // Level up while the the iterator is smaller than the target level 
                     for (int i = this.Level; i < IncomingLevel; i++)
                     {
+                        // Level up 
                         this.LevelUp();
                     }
                 }
+                // If the Level the NPC is going to is less than the current level
                 else if(IncomingLevel < this.Level )
                 {
+                    // Level Down while the iterator is larger than the target level
                     for (int i = this.Level; i > IncomingLevel; i--)
                     {
                         this.LevelDown();

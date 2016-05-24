@@ -102,7 +102,7 @@ namespace rpg_npc_creator
             }
             else
             {
-
+                Console.WriteLine("Invalid Level: "+IncomingLevel);
             }
 
         }

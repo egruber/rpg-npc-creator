@@ -29,11 +29,13 @@ namespace rpg_npc_creator
         {
             this.GenerateStats();
             this.NpcName = new Name();
+            this.Level = 1;
         }
         public Npc(Name NewName)
         {
-            //this.Statistic = new Stat();
             this.NpcName = NewName;
+            this.GenerateStats();
+            this.Level = 1;
         }
         // NPC Serialization
         public void Serialization()

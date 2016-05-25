@@ -42,6 +42,7 @@ namespace rpg_npc_creator
             Log.Info("Serializing NPC");
             string output = JsonConvert.SerializeObject(this);
             Log.Info("Serialization complete.");
+            Log.Info(output);
         }
 
         // Set the Level and call the correct number of LevelUps or LevelDowns

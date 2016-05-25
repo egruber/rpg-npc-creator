@@ -18,52 +18,24 @@ namespace rpg_npc_creator
         [JsonProperty]
         private int Level { get; set; }
 
-        // Remove Stat construction for now
-        /*
-        public void Set(Stat NewStatValue, Name NewName)
-        {
-            //this.StatArray = NewStatValue;
-            this.NpcName = NewName;
-        }
-        
-        public void Set(Stat NewStatValue)
-        {
-            this.StatArray = NewStatValue;
-            this.NpcName = new Name();
-        }
-        */
         public void Set(Name NewName)
         {
             this.NpcName = NewName;
-            //this.StatArray = new Stat();
+            this.GenerateStats();
         }
 
         // Constructors
         public Npc()
         {
-            //this.Statistic = new Stat();
+            this.GenerateStats();
             this.NpcName = new Name();
         }
-        /*
-        public Npc(Stat NewStatValue)
-        {
-            this.Statistic = NewStatValue;
-            this.NpcName = new Name();
-        }
-        */
         public Npc(Name NewName)
         {
             //this.Statistic = new Stat();
             this.NpcName = NewName;
         }
-        /*
-        public Npc(Name NewName, Stat NewStatValue)
-        {
-            //this.Statistic = NewStatValue;
-            this.NpcName = NewName;
-        }
-        */
-        // Enter NPC Serialization
+        // NPC Serialization
         public void Serialization()
         {
             Logger Log = new Logger();
@@ -123,6 +95,12 @@ namespace rpg_npc_creator
         private void LevelDown(int NumberOfLevels = 1)
         {
             this.Level = this.Level - NumberOfLevels;
+        }
+
+        // Method for generating a stat block
+        private void GenerateStats()
+        {
+
         }
 
     }

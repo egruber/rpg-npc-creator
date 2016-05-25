@@ -23,7 +23,7 @@ namespace rpg_npc_creator
 
             NewStatValue.Set(1,"Strength");
 
-            var NewNpc = new Npc(NewName,NewStatValue);
+            var NewNpc = new Npc(NewName);
             Npc BlankNpc = new Npc();
 
             BlankNpc.Serialization();

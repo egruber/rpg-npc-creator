@@ -100,7 +100,7 @@ namespace rpg_npc_creator
         // Method for generating a stat block
         private void GenerateStats()
         {
-
+            this.StatArray = new Stat[] {new Stat("Strength"),new Stat("Dexterity"),new Stat("Consitution"),new Stat("Intelligence"),new Stat("Wisdom"),new Stat("Charisma")};
         }
 
     }

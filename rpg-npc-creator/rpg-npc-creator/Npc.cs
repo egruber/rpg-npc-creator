@@ -12,7 +12,7 @@ namespace rpg_npc_creator
     public class Npc
     {
         [JsonProperty]
-        private Stat[] StatArray { get; set; }
+        private List<Stat> StatBlock { get; set; }
         [JsonProperty]
         private Name NpcName { get; set; }
         [JsonProperty]
@@ -103,7 +103,14 @@ namespace rpg_npc_creator
         // Method for generating a stat block
         private void GenerateStats()
         {
-            this.StatArray = new Stat[] {new Stat("Strength"),new Stat("Dexterity"),new Stat("Consitution"),new Stat("Intelligence"),new Stat("Wisdom"),new Stat("Charisma")};
+            // Create the List
+            this.StatBlock = new List<Stat>();
+            this.StatBlock.Add(new Stat("Strength"));
+            this.StatBlock.Add(new Stat("Dexterity"));
+            this.StatBlock.Add(new Stat("Constitution"));
+            this.StatBlock.Add(new Stat("Intelligence"));
+            this.StatBlock.Add(new Stat("Wisdom"));
+            this.StatBlock.Add(new Stat("Charisma"));
         }
 
     }

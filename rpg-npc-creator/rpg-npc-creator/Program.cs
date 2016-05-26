@@ -16,14 +16,6 @@ namespace rpg_npc_creator
             // Call the Logger
             Logger Log = new Logger();
 
-            Console.WriteLine("Creating a new NPC");
-            var NewName = new Name();
-            NewName.Set("Words");
-            var NewStatValue = new Stat();
-
-            NewStatValue.Set(1,"Strength");
-
-            var NewNpc = new Npc(NewName);
             Npc BlankNpc = new Npc();
 
             BlankNpc.Serialization();

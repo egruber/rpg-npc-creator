@@ -12,57 +12,39 @@ namespace rpg_npc_creator
     public class Npc
     {
         [JsonProperty]
-        private Stat Statistic { get; set; }
+        private List<Stat> StatBlock { get; set; }
         [JsonProperty]
         private Name NpcName { get; set; }
         [JsonProperty]
         private int Level { get; set; }
 
-        public void Set(Stat NewStatValue, Name NewName)
-        {
-            this.Statistic = NewStatValue;
-            this.NpcName = NewName;
-        }
-        public void Set(Stat NewStatValue)
-        {
-            this.Statistic = NewStatValue;
-            this.NpcName = new Name();
-        }
         public void Set(Name NewName)
         {
             this.NpcName = NewName;
-            this.Statistic = new Stat();
+            this.GenerateStats();
         }
 
         // Constructors
         public Npc()
         {
-            this.Statistic = new Stat();
+            this.GenerateStats();
             this.NpcName = new Name();
-        }
-        public Npc(Stat NewStatValue)
-        {
-            this.Statistic = NewStatValue;
-            this.NpcName = new Name();
+            this.Level = 1;
         }
         public Npc(Name NewName)
         {
-            this.Statistic = new Stat();
             this.NpcName = NewName;
+            this.GenerateStats();
+            this.Level = 1;
         }
-        public Npc(Name NewName, Stat NewStatValue)
-        {
-            this.Statistic = NewStatValue;
-            this.NpcName = NewName;
-        }
-
-        // Enter NPC Serialization
+        // NPC Serialization
         public void Serialization()
         {
             Logger Log = new Logger();
             Log.Info("Serializing NPC");
             string output = JsonConvert.SerializeObject(this);
             Log.Info("Serialization complete.");
+            Log.Info(output);
         }
 
         // Set the Level and call the correct number of LevelUps or LevelDowns
@@ -116,6 +98,19 @@ namespace rpg_npc_creator
         private void LevelDown(int NumberOfLevels = 1)
         {
             this.Level = this.Level - NumberOfLevels;
+        }
+
+        // Method for generating a stat block
+        private void GenerateStats()
+        {
+            // Create the List
+            this.StatBlock = new List<Stat>();
+            this.StatBlock.Add(new Stat("Strength"));
+            this.StatBlock.Add(new Stat("Dexterity"));
+            this.StatBlock.Add(new Stat("Constitution"));
+            this.StatBlock.Add(new Stat("Intelligence"));
+            this.StatBlock.Add(new Stat("Wisdom"));
+            this.StatBlock.Add(new Stat("Charisma"));
         }
 
     }

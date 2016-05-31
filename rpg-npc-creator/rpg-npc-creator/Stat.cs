@@ -26,6 +26,7 @@ namespace rpg_npc_creator
         {
             Value = 1;
             Name = "New Stat";
+            Growth = 1.0;
             Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
         public Stat(int IncomingValue)
@@ -38,6 +39,7 @@ namespace rpg_npc_creator
             {
                 this.Value = IncomingValue;
                 this.Name = "New Stat";
+                this.Growth = 1.0;
                 Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
             }
 
@@ -46,6 +48,7 @@ namespace rpg_npc_creator
         {
             this.Value = 1;
             this.Name = IncomingName;
+            this.Growth = 1.0;
             Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
         public Stat(int IncomingValue, string IncomingName)
@@ -58,6 +61,7 @@ namespace rpg_npc_creator
             {
                 this.Value = IncomingValue;
                 Name = IncomingName;
+                this.Growth = 1.0;
                 Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
             }
 

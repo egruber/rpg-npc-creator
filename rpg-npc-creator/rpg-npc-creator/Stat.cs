@@ -144,5 +144,11 @@ namespace rpg_npc_creator
             string output = JsonConvert.SerializeObject(this);
             Log.Info("Serialization complete.");
         }
+
+        // Stat growth is dependent on a growth value.  
+        private void Grow()
+        {
+
+        }
     }
 }

@@ -14,15 +14,19 @@ namespace rpg_npc_creator
     {
         [JsonProperty]
         private int Value { get; set; }
-        
+
         [JsonProperty]
         private string Name { get; set; }
+
+        [JsonProperty]
+        private double Growth { get; set; }
 
         // Constructors
         public Stat()
         {
             Value = 1;
             Name = "New Stat";
+            Growth = 1.0;
             Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
         public Stat(int IncomingValue)
@@ -35,6 +39,7 @@ namespace rpg_npc_creator
             {
                 this.Value = IncomingValue;
                 this.Name = "New Stat";
+                this.Growth = 1.0;
                 Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
             }
 
@@ -43,6 +48,7 @@ namespace rpg_npc_creator
         {
             this.Value = 1;
             this.Name = IncomingName;
+            this.Growth = 1.0;
             Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
         }
         public Stat(int IncomingValue, string IncomingName)
@@ -55,6 +61,7 @@ namespace rpg_npc_creator
             {
                 this.Value = IncomingValue;
                 Name = IncomingName;
+                this.Growth = 1.0;
                 Console.WriteLine("New stat " + Name + " created with value " + Value + ".");
             }
 
@@ -86,6 +93,19 @@ namespace rpg_npc_creator
             this.Name = IncomingName;
         }
 
+        // Use a slightly different naming convention for Growth setting since it's a characteristic of the Stat
+        // Note the Growth CAN be negative values.
+        public void SetGrowth(double IncomingGrowth)
+        {
+            if (IncomingGrowth >= sizeof(double))
+            {
+                Console.WriteLine("This value: " + IncomingGrowth + " is too large.");
+            }
+            else
+            {
+                this.Growth = IncomingGrowth;
+            }
+        }
         // Increase Stat Value
         public void IncreaseBy(int ValueToIncreaseBy)
         {
@@ -143,6 +163,13 @@ namespace rpg_npc_creator
             Log.Info("Serializing Stat");
             string output = JsonConvert.SerializeObject(this);
             Log.Info("Serialization complete.");
+        }
+
+        // Stat growth is dependent on a growth value.  
+        // This method is called during a level up to apply a stat growth to a stat
+        private void Grow(Stat StatToGrow)
+        {
+
         }
     }
 }

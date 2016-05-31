@@ -93,6 +93,19 @@ namespace rpg_npc_creator
             this.Name = IncomingName;
         }
 
+        // Use a slightly different naming convention for Growth setting since it's a characteristic of the Stat
+        // Note the Growth CAN be negative values.
+        public void SetGrowth(double IncomingGrowth)
+        {
+            if (IncomingGrowth >= sizeof(double))
+            {
+                Console.WriteLine("This value: " + IncomingGrowth + " is too large.");
+            }
+            else
+            {
+                this.Growth = IncomingGrowth;
+            }
+        }
         // Increase Stat Value
         public void IncreaseBy(int ValueToIncreaseBy)
         {
@@ -153,7 +166,8 @@ namespace rpg_npc_creator
         }
 
         // Stat growth is dependent on a growth value.  
-        private void Grow()
+        // This method is called during a level up to apply a stat growth to a stat
+        private void Grow(Stat StatToGrow)
         {
 
         }

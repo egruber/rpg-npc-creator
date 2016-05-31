@@ -14,9 +14,12 @@ namespace rpg_npc_creator
     {
         [JsonProperty]
         private int Value { get; set; }
-        
+
         [JsonProperty]
         private string Name { get; set; }
+
+        [JsonProperty]
+        private double Growth { get; set; }
 
         // Constructors
         public Stat()

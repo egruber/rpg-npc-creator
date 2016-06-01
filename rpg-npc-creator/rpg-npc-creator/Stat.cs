@@ -167,8 +167,34 @@ namespace rpg_npc_creator
 
         // Stat growth is dependent on a growth value.  
         // This method is called during a level up to apply a stat growth to a stat
-        private void Grow(Stat StatToGrow)
+        private void Grow()
         {
+            // A stat growth is representative of a chance to increase a stat at level up
+            // How a stat actually is increased:
+            //
+            // Multiple Stat Growth by 100
+            // Take a random integer up to the truncated size of the stat growth
+            // Any value over 50 will net an increase in the stat
+            // Subtract 50 from multiplied stat growth
+            // Repeat until multiplied stat growth is less than 50.
+
+            // First, multiple the stat growth by 100
+            double ScaledStatGrowth = this.Growth * 100;
+
+            try
+            {
+                Convert.ToInt32(ScaledStatGrowth);
+            }
+            catch(OverflowException)
+            {
+                Console.WriteLine("Resulting growth exceeded size of int. Capping at sizeof Int32 for growth.");
+                ScaledStatGrowth = sizeof(Int32);
+            }
+
+            while(ScaledStatGrowth <= 50)
+            {
+                
+            }
 
         }
     }

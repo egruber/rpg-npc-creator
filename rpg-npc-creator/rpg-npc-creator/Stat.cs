@@ -13,10 +13,10 @@ namespace rpg_npc_creator
     public class Stat
     {
         [JsonProperty]
-        private int Value { get; set; }
+        public int Value { get; set; }
 
         [JsonProperty]
-        private string Name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty]
         private double Growth { get; set; }
@@ -167,7 +167,7 @@ namespace rpg_npc_creator
 
         // Stat growth is dependent on a growth value.  
         // This method is called during a level up to apply a stat growth to a stat
-        private void Grow()
+        public void Grow()
         {
             // A stat growth is representative of a chance to increase a stat at level up
             // How a stat actually is increased:
@@ -180,20 +180,33 @@ namespace rpg_npc_creator
 
             // First, multiple the stat growth by 100
             double ScaledStatGrowth = this.Growth * 100;
+            int ConvertedGrowth = 0;
+            int GrowResult = 0;
+
+            // Generate a Random number instance
+            Random StatGrowthRandomization = new Random();
 
             try
             {
-                Convert.ToInt32(ScaledStatGrowth);
+                ConvertedGrowth = Convert.ToInt32(ScaledStatGrowth);
             }
-            catch(OverflowException)
+            catch (OverflowException)
             {
                 Console.WriteLine("Resulting growth exceeded size of int. Capping at sizeof Int32 for growth.");
-                ScaledStatGrowth = sizeof(Int32);
+                ConvertedGrowth = sizeof(Int32);
             }
 
-            while(ScaledStatGrowth <= 50)
+            // Only continue while the converted growth is over or equal to 50
+            while(ConvertedGrowth >= 50)
             {
-                
+                GrowResult = StatGrowthRandomization.Next(0, ConvertedGrowth);
+                Console.WriteLine("GrowResult: " + GrowResult);
+                if(GrowResult >= 50)
+                {
+                    this.Increase();
+                }
+                ConvertedGrowth = ConvertedGrowth - GrowResult;
+                Console.WriteLine("ConvertedGrowth: " + ConvertedGrowth);
             }
 
         }

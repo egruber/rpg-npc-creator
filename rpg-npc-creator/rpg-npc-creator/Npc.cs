@@ -12,11 +12,11 @@ namespace rpg_npc_creator
     public class Npc
     {
         [JsonProperty]
-        private List<Stat> StatBlock { get; set; }
+        public List<Stat> StatBlock { get; set; }
         [JsonProperty]
         private Name NpcName { get; set; }
         [JsonProperty]
-        private int Level { get; set; }
+        public int Level { get; set; }
 
         public void Set(Name NewName)
         {
@@ -52,10 +52,6 @@ namespace rpg_npc_creator
         {
             if(IncomingLevel >= 1 && IncomingLevel <= sizeof(int))
             {
-                // So long as the level is sane
-                // Set it
-                this.Level = IncomingLevel;
-
                 // If the Level we are going to is larger than the current level of the NPC
                 if (IncomingLevel > this.Level)
                 {
@@ -81,6 +77,9 @@ namespace rpg_npc_creator
 
                 }
 
+                // So long as the level is sane
+                // Set it
+                this.Level = IncomingLevel;
             }
             else
             {
@@ -94,6 +93,10 @@ namespace rpg_npc_creator
         private void LevelUp(int NumberOfLevels = 1)
         {
             this.Level = this.Level + NumberOfLevels;
+            foreach(Stat LevelUpStat in StatBlock)
+            {
+                LevelUpStat.Grow();
+            }
         }
         private void LevelDown(int NumberOfLevels = 1)
         {
@@ -111,6 +114,13 @@ namespace rpg_npc_creator
             this.StatBlock.Add(new Stat("Intelligence"));
             this.StatBlock.Add(new Stat("Wisdom"));
             this.StatBlock.Add(new Stat("Charisma"));
+        }
+        public void PrintStats()
+        {
+            foreach (Stat CurrentStat in StatBlock)
+            {
+                Console.WriteLine(CurrentStat.Name + ": "+CurrentStat.Value);
+            }
         }
 
     }

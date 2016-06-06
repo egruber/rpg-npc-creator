@@ -19,6 +19,13 @@ namespace rpg_npc_creator
             Npc BlankNpc = new Npc();
 
             BlankNpc.Serialization();
+            
+            foreach(Stat StatInBlock in BlankNpc.StatBlock)
+            {
+                StatInBlock.SetGrowth(4.0);
+            }
+            BlankNpc.SetLevel(3);
+            BlankNpc.PrintStats();
 
             // End Program with visible output
             Console.ReadKey();

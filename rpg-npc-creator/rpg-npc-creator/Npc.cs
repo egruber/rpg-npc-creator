@@ -50,7 +50,7 @@ namespace rpg_npc_creator
         // Set the Level and call the correct number of LevelUps or LevelDowns
         public void SetLevel(int IncomingLevel)
         {
-            if(IncomingLevel >= 1 && IncomingLevel <= sizeof(int))
+            if(IncomingLevel >= 1 && IncomingLevel <= Int32.MaxValue)
             {
                 // If the Level we are going to is larger than the current level of the NPC
                 if (IncomingLevel > this.Level)

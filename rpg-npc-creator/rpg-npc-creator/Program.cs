@@ -22,7 +22,7 @@ namespace rpg_npc_creator
             
             foreach(Stat StatInBlock in BlankNpc.StatBlock)
             {
-                StatInBlock.SetGrowth(4.0);
+                StatInBlock.SetGrowth(2.0);
             }
             BlankNpc.SetLevel(3);
             BlankNpc.PrintStats();

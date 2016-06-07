@@ -31,7 +31,7 @@ namespace rpg_npc_creator
         }
         public Stat(int IncomingValue)
         {
-            if (IncomingValue >= sizeof(int))
+            if (IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -53,7 +53,7 @@ namespace rpg_npc_creator
         }
         public Stat(int IncomingValue, string IncomingName)
         {
-            if (IncomingValue >= sizeof(int))
+            if (IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -70,7 +70,7 @@ namespace rpg_npc_creator
         // Set
         public void Set(int IncomingValue)
         {
-            if(IncomingValue >= sizeof(int))
+            if(IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -82,7 +82,7 @@ namespace rpg_npc_creator
         }
         public void Set(int IncomingValue, string IncomingName)
         {
-            if (IncomingValue >= sizeof(int))
+            if (IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -109,7 +109,7 @@ namespace rpg_npc_creator
         // Increase Stat Value
         public void IncreaseBy(int ValueToIncreaseBy)
         {
-            if(ValueToIncreaseBy+this.Value >= sizeof(int))
+            if(ValueToIncreaseBy+this.Value >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: "+ValueToIncreaseBy+ " is too large to add to this stat value: "+this.Value);
             }
@@ -121,7 +121,7 @@ namespace rpg_npc_creator
         }
         public void Increase()
         {
-            if (this.Value++ >= sizeof(int))
+            if (this.Value++ >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + this.Value + " is too large to increase by 1");
             }
@@ -134,7 +134,7 @@ namespace rpg_npc_creator
         // Decrease Stat Value
         public void DecreaseBy(int ValueToDecreaseBy)
         {
-            if (Math.Abs(ValueToDecreaseBy + this.Value) >= sizeof(int))
+            if (Math.Abs(ValueToDecreaseBy + this.Value) >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + ValueToDecreaseBy + " is too large to subtract from this stat value: " + this.Value);
             }
@@ -146,7 +146,7 @@ namespace rpg_npc_creator
         }
         public void Decrease()
         {
-            if (Math.Abs(this.Value--) >= sizeof(int))
+            if (Math.Abs(this.Value--) >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + this.Value + " is too large to decrease by 1");
             }

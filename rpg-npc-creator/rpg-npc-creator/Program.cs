@@ -19,8 +19,10 @@ namespace rpg_npc_creator
             Npc BlankNpc = new Npc();
 
             BlankNpc.Serialization();
-            
-            foreach(Stat StatInBlock in BlankNpc.StatBlock)
+
+            Console.WriteLine("The largest int is: " + Int32.MaxValue);
+
+            foreach (Stat StatInBlock in BlankNpc.StatBlock)
             {
                 StatInBlock.SetGrowth(2.0);
             }

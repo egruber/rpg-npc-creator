@@ -193,7 +193,7 @@ namespace rpg_npc_creator
             catch (OverflowException)
             {
                 Console.WriteLine("Resulting growth exceeded size of int. Capping at sizeof Int32 for growth.");
-                ConvertedGrowth = sizeof(Int32);
+                ConvertedGrowth = Int32.MaxValue;
             }
 
             // Only continue while the converted growth is over or equal to 50

@@ -21,6 +21,9 @@ namespace rpg_npc_creator
         [JsonProperty]
         private double Growth { get; set; }
 
+        [JsonIgnore]
+        private Random StatGrowthRandomization = new Random();
+
         // Constructors
         public Stat()
         {
@@ -184,7 +187,7 @@ namespace rpg_npc_creator
             int GrowResult = 0;
 
             // Generate a Random number instance
-            Random StatGrowthRandomization = new Random();
+            StatGrowthRandomization.Next();
 
             try
             {
@@ -197,16 +200,16 @@ namespace rpg_npc_creator
             }
 
             // Only continue while the converted growth is over or equal to 50
-            while(ConvertedGrowth >= 50)
+            while(ConvertedGrowth >= 25)
             {
                 GrowResult = StatGrowthRandomization.Next(0, ConvertedGrowth);
-                Console.WriteLine("GrowResult: " + GrowResult);
-                if(GrowResult >= 50)
+                if(GrowResult >= 25)
                 {
+                    Console.WriteLine("Increasing " + this.Name +". Based on Grow Result: " + GrowResult);
+
                     this.Increase();
                 }
                 ConvertedGrowth = ConvertedGrowth - GrowResult;
-                Console.WriteLine("ConvertedGrowth: " + ConvertedGrowth);
             }
 
         }

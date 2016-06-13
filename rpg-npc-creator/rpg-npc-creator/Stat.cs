@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace rpg_npc_creator
 {
@@ -13,10 +14,10 @@ namespace rpg_npc_creator
     public class Stat
     {
         [JsonProperty]
-        private int Value { get; set; }
+        public int Value { get; set; }
 
         [JsonProperty]
-        private string Name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty]
         private double Growth { get; set; }
@@ -31,7 +32,7 @@ namespace rpg_npc_creator
         }
         public Stat(int IncomingValue)
         {
-            if (IncomingValue >= sizeof(int))
+            if (IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -53,7 +54,7 @@ namespace rpg_npc_creator
         }
         public Stat(int IncomingValue, string IncomingName)
         {
-            if (IncomingValue >= sizeof(int))
+            if (IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -70,7 +71,7 @@ namespace rpg_npc_creator
         // Set
         public void Set(int IncomingValue)
         {
-            if(IncomingValue >= sizeof(int))
+            if(IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -82,7 +83,7 @@ namespace rpg_npc_creator
         }
         public void Set(int IncomingValue, string IncomingName)
         {
-            if (IncomingValue >= sizeof(int))
+            if (IncomingValue >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + IncomingValue + " is too large to set to this stat");
             }
@@ -109,7 +110,7 @@ namespace rpg_npc_creator
         // Increase Stat Value
         public void IncreaseBy(int ValueToIncreaseBy)
         {
-            if(ValueToIncreaseBy+this.Value >= sizeof(int))
+            if(ValueToIncreaseBy+this.Value >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: "+ValueToIncreaseBy+ " is too large to add to this stat value: "+this.Value);
             }
@@ -121,7 +122,7 @@ namespace rpg_npc_creator
         }
         public void Increase()
         {
-            if (this.Value++ >= sizeof(int))
+            if (this.Value++ >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + this.Value + " is too large to increase by 1");
             }
@@ -134,7 +135,7 @@ namespace rpg_npc_creator
         // Decrease Stat Value
         public void DecreaseBy(int ValueToDecreaseBy)
         {
-            if (Math.Abs(ValueToDecreaseBy + this.Value) >= sizeof(int))
+            if (Math.Abs(ValueToDecreaseBy + this.Value) >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + ValueToDecreaseBy + " is too large to subtract from this stat value: " + this.Value);
             }
@@ -146,7 +147,7 @@ namespace rpg_npc_creator
         }
         public void Decrease()
         {
-            if (Math.Abs(this.Value--) >= sizeof(int))
+            if (Math.Abs(this.Value--) >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + this.Value + " is too large to decrease by 1");
             }
@@ -167,9 +168,62 @@ namespace rpg_npc_creator
 
         // Stat growth is dependent on a growth value.  
         // This method is called during a level up to apply a stat growth to a stat
-        private void Grow(Stat StatToGrow)
+        public void Grow()
         {
+            // A stat growth is representative of a chance to increase a stat at level up
+            // How a stat actually is increased:
+            //
+            // Multiple Stat Growth by 100
+            // Take a random integer up to the truncated size of the stat growth
+            // Any value over 50 will net an increase in the stat
+            // Subtract 50 from multiplied stat growth
+            // Repeat until multiplied stat growth is less than 50.
 
+            // First, multiple the stat growth by 100
+            double ScaledStatGrowth = this.Growth * 100;
+            int ConvertedGrowth = 0;
+            int GrowResult = 0;
+
+            try
+            {
+                ConvertedGrowth = Convert.ToInt32(ScaledStatGrowth);
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Resulting growth exceeded size of int. Capping at sizeof Int32 for growth.");
+                ConvertedGrowth = Int32.MaxValue;
+            }
+
+            // Only continue while the converted growth is over or equal to 50
+            while(ConvertedGrowth >= 25)
+            {
+                GrowResult = RandomNumber(0, ConvertedGrowth);
+                if(GrowResult >= 25)
+                {
+                    this.Increase();
+                }
+                else
+                {
+                    break;
+                }
+                ConvertedGrowth = ConvertedGrowth - GrowResult;
+            }
+
+        }
+
+        // Function to get random number. 
+        // Pulled from: http://stackoverflow.com/questions/767999/random-number-generator-only-generating-one-random-number
+        // It's really annoying how the standard C# random number generator works. 
+        // This is now generating good, clean, random values on the growth
+
+        private static readonly Random random = new Random();
+        private static readonly object syncLock = new object();
+        public static int RandomNumber(int min, int max)
+        {
+            lock (syncLock)
+            { // synchronize
+                return random.Next(min, max);
+            }
         }
     }
 }

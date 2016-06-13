@@ -95,6 +95,7 @@ namespace rpg_npc_creator
             this.Level = this.Level + NumberOfLevels;
             foreach(Stat LevelUpStat in StatBlock)
             {
+                Console.WriteLine("Calling Grow on: "+LevelUpStat.Name);
                 LevelUpStat.Grow();
             }
         }

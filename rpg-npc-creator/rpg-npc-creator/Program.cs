@@ -24,7 +24,7 @@ namespace rpg_npc_creator
             {
                 StatInBlock.SetGrowth(2.0);
             }
-            BlankNpc.SetLevel(3);
+            BlankNpc.SetLevel(2);
             BlankNpc.PrintStats();
 
             // End Program with visible output

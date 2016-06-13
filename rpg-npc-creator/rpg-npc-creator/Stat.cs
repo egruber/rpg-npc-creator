@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace rpg_npc_creator
 {
@@ -20,9 +21,6 @@ namespace rpg_npc_creator
 
         [JsonProperty]
         private double Growth { get; set; }
-
-        [JsonIgnore]
-        private Random StatGrowthRandomization = new Random();
 
         // Constructors
         public Stat()
@@ -186,9 +184,6 @@ namespace rpg_npc_creator
             int ConvertedGrowth = 0;
             int GrowResult = 0;
 
-            // Generate a Random number instance
-            StatGrowthRandomization.Next();
-
             try
             {
                 ConvertedGrowth = Convert.ToInt32(ScaledStatGrowth);
@@ -202,16 +197,33 @@ namespace rpg_npc_creator
             // Only continue while the converted growth is over or equal to 50
             while(ConvertedGrowth >= 25)
             {
-                GrowResult = StatGrowthRandomization.Next(0, ConvertedGrowth);
+                GrowResult = RandomNumber(0, ConvertedGrowth);
                 if(GrowResult >= 25)
                 {
-                    Console.WriteLine("Increasing " + this.Name +". Based on Grow Result: " + GrowResult);
-
                     this.Increase();
+                }
+                else
+                {
+                    break;
                 }
                 ConvertedGrowth = ConvertedGrowth - GrowResult;
             }
 
+        }
+
+        // Function to get random number. 
+        // Pulled from: http://stackoverflow.com/questions/767999/random-number-generator-only-generating-one-random-number
+        // It's really annoying how the standard C# random number generator works. 
+        // This is now generating good, clean, random values on the growth
+
+        private static readonly Random random = new Random();
+        private static readonly object syncLock = new object();
+        public static int RandomNumber(int min, int max)
+        {
+            lock (syncLock)
+            { // synchronize
+                return random.Next(min, max);
+            }
         }
     }
 }

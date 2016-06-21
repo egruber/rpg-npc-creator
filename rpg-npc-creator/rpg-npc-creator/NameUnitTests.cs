@@ -14,8 +14,8 @@ namespace NUnit.Framework.Tests
         public string CreateNewName(string Name)
         {
             Name NewNpc = new Name(Name);
-
-            return (NewNpc);
+            string CreatedName = NewNpc.getName();
+            return (CreatedName);
         }
     }
 }

@@ -10,11 +10,25 @@ namespace NUnit.Framework.Tests
 {
     class NameUnitTests
     {
-        [TestCase("NewName", ExpectedResult = "NewName")]
+        [TestCase("Inbound Name", ExpectedResult = "Inbound Name")]
         public string CreateNewName(string Name)
         {
             Name NewNpc = new Name(Name);
             string CreatedName = NewNpc.getName();
+            return (CreatedName);
+        }
+        [TestCase(ExpectedResult = "Nameless")]
+        public string DefaultNameConstructor()
+        {
+            Name NewNpc = new Name();
+            string CreatedName = NewNpc.getName();
+            return (CreatedName);
+        }
+        [TestCase(ExpectedResult = "Nameless")]
+        public string DefaultNameConstructorFromNpcCreation()
+        {
+            Npc NewNpc = new Npc();
+            string CreatedName = NewNpc.NpcName.getName();
             return (CreatedName);
         }
     }

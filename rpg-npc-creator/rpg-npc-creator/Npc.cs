@@ -14,7 +14,7 @@ namespace rpg_npc_creator
         [JsonProperty]
         public List<Stat> StatBlock { get; set; }
         [JsonProperty]
-        private Name NpcName { get; set; }
+        public Name NpcName { get; set; }
         [JsonProperty]
         public int Level { get; set; }
 

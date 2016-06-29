@@ -17,5 +17,12 @@ namespace NUnit.Framework.Tests
             int NewValue = NewStat.Value;
             return (NewValue);
         }
+        [TestCase(ExpectedResult = 1)]
+        public int CreateNewStatWithoutValue()
+        {
+            Stat NewStat = new Stat();
+            int NewValue = NewStat.Value;
+            return (NewValue);
+        }
     }
 }

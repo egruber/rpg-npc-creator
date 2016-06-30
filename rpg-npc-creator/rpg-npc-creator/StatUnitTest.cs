@@ -24,5 +24,20 @@ namespace NUnit.Framework.Tests
             int NewValue = NewStat.Value;
             return (NewValue);
         }
+        [TestCase(ExpectedResult = 0)]
+        public int CreateNewStatWithMaxValue()
+        {
+            // This should return an error because MaxInt is too large for this stat
+            Stat NewStat = new Stat(Int32.MaxValue);
+            int NewValue = NewStat.Value;
+            return (NewValue);
+        }
+        [TestCase(2147483646, ExpectedResult = 2147483646)]
+        public int CreateNewStatWithOneUnderMaxValue(int OneMinusMaxInt)
+        {
+            Stat NewStat = new Stat(OneMinusMaxInt);
+            int NewValue = NewStat.Value;
+            return (NewValue);
+        }
     }
 }

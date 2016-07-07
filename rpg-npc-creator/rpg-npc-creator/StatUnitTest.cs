@@ -46,5 +46,12 @@ namespace NUnit.Framework.Tests
             string NewStatName = NewStat.Name;
             return (NewStatName);
         }
+        [TestCase(ExpectedResult = "Updated Name")]
+        public string CreateNewStatWithSpecifiedName()
+        {
+            Stat NewStat = new Stat("Updated Name");
+            string NewStatName = NewStat.Name;
+            return (NewStatName);
+        }
     }
 }

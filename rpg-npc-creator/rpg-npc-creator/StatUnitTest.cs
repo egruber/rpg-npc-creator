@@ -77,5 +77,15 @@ namespace NUnit.Framework.Tests
             NewStat.Set(-1);
             Assert.AreEqual(-1, NewStat.Value);
         }
+        [Test]
+        public void SetStatDoesNotChangeStatValueIfFailsToSet()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(50);
+            // Set the stat to MaxInt and it should return the value set at the start
+            NewStat.Set(Int32.MaxValue);
+            Assert.AreEqual(50, NewStat.Value);
+        }
     }
 }

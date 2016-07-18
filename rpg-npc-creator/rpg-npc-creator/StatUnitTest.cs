@@ -87,5 +87,15 @@ namespace NUnit.Framework.Tests
             NewStat.Set(Int32.MaxValue);
             Assert.AreEqual(50, NewStat.Value);
         }
+        [Test]
+        public void IncreaseWorksOnNegativeValues()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(-1);
+            // Set the stat to MaxInt and it should return the value set at the start
+            NewStat.Increase();
+            Assert.AreEqual(0, NewStat.Value);
+        }
     }
 }

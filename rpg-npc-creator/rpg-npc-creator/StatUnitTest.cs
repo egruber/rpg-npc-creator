@@ -8,6 +8,8 @@ using rpg_npc_creator;
 
 namespace NUnit.Framework.Tests
 {
+    [TestFixture]
+
     class StatUnitTest
     {
         [TestCase(1, ExpectedResult = 1)]
@@ -59,6 +61,51 @@ namespace NUnit.Framework.Tests
             Stat NewStat = new Stat();
             NewStat.Set(NewValue);
             return (NewStat.Value);
+        }
+        [TestCase(ExpectedResult = 1)]
+        public int SetStatWithMaxValue()
+        {
+            // This should return 1 because MaxInt is too large for this stat thus no Set should occur, so the Default value should be used
+            Stat NewStat = new Stat();
+            NewStat.Set(Int32.MaxValue);
+            return (NewStat.Value);
+        }
+        [Test]
+        public void SetStatWithNegativeValue()
+        {
+            Stat NewStat = new Stat();
+            NewStat.Set(-1);
+            Assert.AreEqual(-1, NewStat.Value);
+        }
+        [Test]
+        public void SetStatDoesNotChangeStatValueIfFailsToSet()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(50);
+            // Set the stat to MaxInt and it should return the value set at the start
+            NewStat.Set(Int32.MaxValue);
+            Assert.AreEqual(50, NewStat.Value);
+        }
+        [Test]
+        public void IncreaseWorksOnNegativeValues()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(-1);
+            // Set the stat to MaxInt and it should return the value set at the start
+            NewStat.Increase();
+            Assert.AreEqual(0, NewStat.Value);
+        }
+        [Test]
+        public void DecreaseWorksOnNegativeValues()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(-1);
+            // Set the stat to MaxInt and it should return the value set at the start
+            NewStat.Decrease();
+            Assert.AreEqual(-2, NewStat.Value);
         }
     }
 }

@@ -93,7 +93,6 @@ namespace NUnit.Framework.Tests
             Stat NewStat = new Stat();
             // Set up initial condition
             NewStat.Set(-1);
-            // Set the stat to MaxInt and it should return the value set at the start
             NewStat.Increase();
             Assert.AreEqual(0, NewStat.Value);
         }
@@ -103,7 +102,6 @@ namespace NUnit.Framework.Tests
             Stat NewStat = new Stat();
             // Set up initial condition
             NewStat.Set(-1);
-            // Set the stat to MaxInt and it should return the value set at the start
             NewStat.Decrease();
             Assert.AreEqual(-2, NewStat.Value);
         }

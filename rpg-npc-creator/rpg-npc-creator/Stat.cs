@@ -141,7 +141,7 @@ namespace rpg_npc_creator
             }
             else
             {
-                this.Value = Value + ValueToDecreaseBy;
+                this.Value = Value - ValueToDecreaseBy;
             }
 
         }

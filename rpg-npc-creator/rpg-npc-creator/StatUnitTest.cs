@@ -123,5 +123,15 @@ namespace NUnit.Framework.Tests
             NewStat.DecreaseBy(-1);
             Assert.AreEqual(0, NewStat.Value);
         }
+        [Test]
+        public void DecreaseByWorksWithIncreaseBy()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(-1);
+            NewStat.DecreaseBy(1);
+            NewStat.IncreaseBy(2);
+            Assert.AreEqual(0, NewStat.Value);
+        }
     }
 }

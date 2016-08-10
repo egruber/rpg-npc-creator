@@ -41,12 +41,12 @@ namespace NUnit.Framework.Tests
             int NewValue = NewStat.Value;
             return (NewValue);
         }
-        [TestCase(ExpectedResult = "New Stat")]
-        public string CreateNewStatWithDefaultName()
+        [Test]
+        public void CreateNewStatWithDefaultName()
         {
             Stat NewStat = new Stat();
             string NewStatName = NewStat.Name;
-            return (NewStatName);
+            Assert.AreEqual("New Stat", NewStat.Name);
         }
         [Test]
         public void CreateNewStatWithSpecifiedName()

@@ -62,13 +62,13 @@ namespace NUnit.Framework.Tests
             NewStat.Set(NewValue);
             return (NewStat.Value);
         }
-        [TestCase(ExpectedResult = 1)]
-        public int SetStatWithMaxValue()
+        [Test]
+        public void SetStatWithMaxValue()
         {
             // This should return 1 because MaxInt is too large for this stat thus no Set should occur, so the Default value should be used
             Stat NewStat = new Stat();
             NewStat.Set(Int32.MaxValue);
-            return (NewStat.Value);
+            Assert.AreEqual(1, NewStat.Value);
         }
         [Test]
         public void SetStatWithNegativeValue()

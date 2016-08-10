@@ -55,12 +55,12 @@ namespace NUnit.Framework.Tests
             string NewStatName = NewStat.Name;
             return (NewStatName);
         }
-        [TestCase(2, ExpectedResult = 2)]
-        public int SetStatValue(int NewValue)
+        [Test]
+        public void SetStatValue(int NewValue)
         {
             Stat NewStat = new Stat();
             NewStat.Set(NewValue);
-            return (NewStat.Value);
+            Assert.AreEqual(2, NewStat.Value);
         }
         [Test]
         public void SetStatWithMaxValue()

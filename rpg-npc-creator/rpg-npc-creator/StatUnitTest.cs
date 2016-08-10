@@ -34,12 +34,13 @@ namespace NUnit.Framework.Tests
             int NewValue = NewStat.Value;
             return (NewValue);
         }
-        [TestCase(2147483646, ExpectedResult = 2147483646)]
-        public int CreateNewStatWithOneUnderMaxValue(int OneMinusMaxInt)
+        [Test]
+        public void CreateNewStatWithOneUnderMaxValue()
         {
+            int OneMinusMaxInt = 2147483646;
             Stat NewStat = new Stat(OneMinusMaxInt);
             int NewValue = NewStat.Value;
-            return (NewValue);
+            Assert.AreEqual(2147483646, NewStat.Value);
         }
         [Test]
         public void CreateNewStatWithDefaultName()
@@ -56,8 +57,9 @@ namespace NUnit.Framework.Tests
             Assert.AreEqual("Updated Name", NewStat.Name);
         }
         [Test]
-        public void SetStatValue(int NewValue)
+        public void SetStatValue()
         {
+            int NewValue = 2;
             Stat NewStat = new Stat();
             NewStat.Set(NewValue);
             Assert.AreEqual(2, NewStat.Value);

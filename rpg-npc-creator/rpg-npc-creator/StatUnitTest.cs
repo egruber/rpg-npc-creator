@@ -48,12 +48,12 @@ namespace NUnit.Framework.Tests
             string NewStatName = NewStat.Name;
             return (NewStatName);
         }
-        [TestCase(ExpectedResult = "Updated Name")]
-        public string CreateNewStatWithSpecifiedName()
+        [Test]
+        public void CreateNewStatWithSpecifiedName()
         {
             Stat NewStat = new Stat("Updated Name");
             string NewStatName = NewStat.Name;
-            return (NewStatName);
+            Assert.AreEqual("Updated Name", NewStat.Name);
         }
         [Test]
         public void SetStatValue(int NewValue)

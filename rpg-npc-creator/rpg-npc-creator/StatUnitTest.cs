@@ -34,41 +34,43 @@ namespace NUnit.Framework.Tests
             int NewValue = NewStat.Value;
             return (NewValue);
         }
-        [TestCase(2147483646, ExpectedResult = 2147483646)]
-        public int CreateNewStatWithOneUnderMaxValue(int OneMinusMaxInt)
+        [Test]
+        public void CreateNewStatWithOneUnderMaxValue()
         {
+            int OneMinusMaxInt = 2147483646;
             Stat NewStat = new Stat(OneMinusMaxInt);
             int NewValue = NewStat.Value;
-            return (NewValue);
+            Assert.AreEqual(2147483646, NewStat.Value);
         }
-        [TestCase(ExpectedResult = "New Stat")]
-        public string CreateNewStatWithDefaultName()
+        [Test]
+        public void CreateNewStatWithDefaultName()
         {
             Stat NewStat = new Stat();
             string NewStatName = NewStat.Name;
-            return (NewStatName);
+            Assert.AreEqual("New Stat", NewStat.Name);
         }
-        [TestCase(ExpectedResult = "Updated Name")]
-        public string CreateNewStatWithSpecifiedName()
+        [Test]
+        public void CreateNewStatWithSpecifiedName()
         {
             Stat NewStat = new Stat("Updated Name");
             string NewStatName = NewStat.Name;
-            return (NewStatName);
+            Assert.AreEqual("Updated Name", NewStat.Name);
         }
-        [TestCase(2, ExpectedResult = 2)]
-        public int SetStatValue(int NewValue)
+        [Test]
+        public void SetStatValue()
         {
+            int NewValue = 2;
             Stat NewStat = new Stat();
             NewStat.Set(NewValue);
-            return (NewStat.Value);
+            Assert.AreEqual(2, NewStat.Value);
         }
-        [TestCase(ExpectedResult = 1)]
-        public int SetStatWithMaxValue()
+        [Test]
+        public void SetStatWithMaxValue()
         {
             // This should return 1 because MaxInt is too large for this stat thus no Set should occur, so the Default value should be used
             Stat NewStat = new Stat();
             NewStat.Set(Int32.MaxValue);
-            return (NewStat.Value);
+            Assert.AreEqual(1, NewStat.Value);
         }
         [Test]
         public void SetStatWithNegativeValue()
@@ -121,6 +123,16 @@ namespace NUnit.Framework.Tests
             // Set up initial condition
             NewStat.Set(-1);
             NewStat.DecreaseBy(-1);
+            Assert.AreEqual(0, NewStat.Value);
+        }
+        [Test]
+        public void DecreaseByWorksWithIncreaseBy()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(-1);
+            NewStat.DecreaseBy(1);
+            NewStat.IncreaseBy(2);
             Assert.AreEqual(0, NewStat.Value);
         }
     }

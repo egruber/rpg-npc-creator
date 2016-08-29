@@ -135,5 +135,15 @@ namespace NUnit.Framework.Tests
             NewStat.IncreaseBy(2);
             Assert.AreEqual(0, NewStat.Value);
         }
+        [Test]
+        public void MultipleIncreaseBy()
+        {
+            Stat NewStat = new Stat();
+            // Set up initial condition
+            NewStat.Set(-1);
+            NewStat.IncreaseBy(3);
+            NewStat.IncreaseBy(2);
+            Assert.AreEqual(4, NewStat.Value);
+        }
     }
 }

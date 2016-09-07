@@ -17,9 +17,6 @@ namespace rpg_npc_creator
         public Name NpcName { get; set; }
         [JsonProperty]
         public int Level { get; set; }
-        // TODO: Refactor "Height" into a "Characteristics" hash
-        [JsonProperty]
-        public int Height { get; set; }
 
         public void Set(Name NewName)
         {
@@ -33,14 +30,13 @@ namespace rpg_npc_creator
             this.GenerateStats();
             this.NpcName = new Name();
             this.Level = 1;
-            this.Height = 1;
+
         }
         public Npc(Name NewName)
         {
             this.NpcName = NewName;
             this.GenerateStats();
             this.Level = 1;
-            this.Height = 1;
         }
         // NPC Serialization
         public void Serialization()

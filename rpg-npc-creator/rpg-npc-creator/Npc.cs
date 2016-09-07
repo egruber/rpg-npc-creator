@@ -116,6 +116,7 @@ namespace rpg_npc_creator
             this.StatBlock.Add(new Stat("Intelligence"));
             this.StatBlock.Add(new Stat("Wisdom"));
             this.StatBlock.Add(new Stat("Charisma"));
+            this.StatBlock.Add(new Stat("Height"));
         }
         public void PrintStats()
         {

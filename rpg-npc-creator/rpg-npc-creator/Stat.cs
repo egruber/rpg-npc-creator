@@ -79,7 +79,7 @@ namespace rpg_npc_creator
             {
                 this.Value = IncomingValue;
             }
-            
+
         }
         public void Set(int IncomingValue, string IncomingName)
         {
@@ -122,7 +122,7 @@ namespace rpg_npc_creator
         }
         public void Increase()
         {
-            if (this.Value++ >= Int32.MaxValue)
+            if (this.Value >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + this.Value + " is too large to increase by 1");
             }
@@ -141,19 +141,19 @@ namespace rpg_npc_creator
             }
             else
             {
-                this.Value = Value + ValueToDecreaseBy;
+                this.Value = Value - ValueToDecreaseBy;
             }
 
         }
         public void Decrease()
         {
-            if (Math.Abs(this.Value--) >= Int32.MaxValue)
+            if (Math.Abs(this.Value) >= Int32.MaxValue)
             {
                 Console.WriteLine("This value: " + this.Value + " is too large to decrease by 1");
             }
             else
             {
-                this.Value++;
+                this.Value--;
             }
         }
 

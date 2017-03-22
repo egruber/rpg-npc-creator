@@ -14,7 +14,7 @@ namespace rpg_npc_creator
         [JsonProperty]
         public List<Stat> StatBlock { get; set; }
         [JsonProperty]
-        private Name NpcName { get; set; }
+        public Name NpcName { get; set; }
         [JsonProperty]
         public int Level { get; set; }
 
@@ -30,6 +30,7 @@ namespace rpg_npc_creator
             this.GenerateStats();
             this.NpcName = new Name();
             this.Level = 1;
+
         }
         public Npc(Name NewName)
         {
@@ -115,6 +116,9 @@ namespace rpg_npc_creator
             this.StatBlock.Add(new Stat("Intelligence"));
             this.StatBlock.Add(new Stat("Wisdom"));
             this.StatBlock.Add(new Stat("Charisma"));
+            this.StatBlock.Add(new Stat("Height"));
+            this.StatBlock.Add(new Stat("Weight"));
+
         }
         public void PrintStats()
         {
